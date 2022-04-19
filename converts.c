@@ -52,3 +52,4 @@ char *number(char *str, long num, int base, int size, int precision, int type)
 		*str++ = ' ';
 	return (str);
 }
+
