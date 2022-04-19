@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * utchar - writes the character c to stdout
+ * _putchar - writes the character c to stdout
  * @c: The character to print
  *
  * Return: On success 1.
@@ -78,6 +78,5 @@ int skip_atoi(const char **s)
 
 	while (_isdigit(**s))
 		i = i * 10 + *((*s)++) - '0';
-	return i;
+	return (i);
 }
-

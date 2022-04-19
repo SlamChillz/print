@@ -1,5 +1,14 @@
 #include "main.h"
 
+/**
+ * checktype - check data type
+ *
+ * @type: data type
+ * @num: number
+ * @size: size
+ * @sign: polarity
+ * @base: number base
+ */
 void checktype(int *type, long *num, int *size, char *sign, int *base)
 {
 	if (*type & SIGN)
@@ -30,7 +39,21 @@ void checktype(int *type, long *num, int *size, char *sign, int *base)
 	}
 }
 
-void checkprecision(char **str, int *type, int *precision, int *i, int *size, char *sign, int *base, char *c, char *locase)
+/**
+ * checkprecision - check number precision
+ *
+ * @str: string buffer
+ * @type: data type
+ * @precision: precision vaalue
+ * @i: index
+ * @size: size
+ * @sign: polarity
+ * @base: number base
+ * @c: character operand
+ * @locase: locase
+ */
+void checkprecision(char **str, int *type, int *precision,
+int *i, int *size, char *sign, int *base, char *c, char *locase)
 {
 	if (*i > *precision)
 		*precision = *i;
@@ -61,4 +84,3 @@ void checkprecision(char **str, int *type, int *precision, int *i, int *size, ch
 			*((*str)++) = *c;
 	}
 }
-

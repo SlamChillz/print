@@ -1,5 +1,16 @@
 #include "main.h"
 
+/**
+ * number - print number
+ *
+ * @str: string buffer
+ * @num: number
+ * @base: number base
+ * @size: size of number
+ * @precision: precision
+ * @type: data type
+ * Return: char*
+ */
 char *number(char *str, long num, int base, int size, int precision, int type)
 {
 	static const char digits[16] = "0123456789ABCDEF";
@@ -26,11 +37,13 @@ char *number(char *str, long num, int base, int size, int precision, int type)
 	{
 		while (num != 0)
 		{
-			tmp[i++] = (digits[(unsigned long) num % (unsigned int) base] | locase);
+			tmp[i++] = (digits[(unsigned long) num %
+					   (unsigned int) base] | locase);
 			num = (unsigned long) num / (unsigned int) base;
 		}
 	}
-	checkprecision(&str, &type, &precision, &i, &size, &sign, &base, &c, &locase);
+	checkprecision(&str, &type, &precision, &i, &size, &sign, &base,
+		       &c, &locase);
 	while (i < precision--)
 		*str++ = '0';
 	while (i-- > 0)
@@ -39,4 +52,3 @@ char *number(char *str, long num, int base, int size, int precision, int type)
 		*str++ = ' ';
 	return (str);
 }
-

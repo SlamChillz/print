@@ -1,5 +1,13 @@
 #include "main.h"
 
+/**
+ * _vsprintf - analysis all incoming parameters
+ *
+ * @buf: buffer
+ * @fmt: format
+ * @args: vardiac list
+ * Return: int
+ */
 int _vsprintf(char *buf, const char *fmt, va_list args)
 {
 	int len, result = 0, base = 10;
@@ -23,8 +31,11 @@ int _vsprintf(char *buf, const char *fmt, va_list args)
 		getprecision(&fmt, args, &precision);
 		/* get the conversion qualifier */
 		getqualifier(&fmt, &qualifier);
-		result = customspecifiers(&fmt, &str, args, &flags,
-				&field_width, &precision, &len, &base);
+		result = customspecifiers1(&fmt, &str, args, &flags,
+				&field_width, &precision, &len);
+		if (result)
+			continue;
+		result = customspecifiers2(&fmt, &str, &flags, &base);
 		if (result)
 			continue;
 		lh(args, &flags, &qualifier, &num);
@@ -34,6 +45,13 @@ int _vsprintf(char *buf, const char *fmt, va_list args)
 	return (str - buf);
 }
 
+/**
+ * _printf - printf
+ *
+ * @fmt: format
+ * @...: arguments
+ * Return: int
+ */
 int _printf(const char *fmt, ...)
 {
 	char printf_buf[1024];
